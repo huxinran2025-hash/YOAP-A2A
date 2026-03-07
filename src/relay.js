@@ -205,6 +205,9 @@ export default {
             if (path === '/yoap/cap' && method === 'GET') return handleYoapCap(env);
             if (path === '/yoap/request' && method === 'POST') return handleYoapRequest(request, env);
             if (path.startsWith('/yoap/status/') && method === 'GET') return handleYoapStatus(env, path.slice(13));
+            // SEO
+            if (path === '/sitemap.xml') return handleSitemap();
+            if (path === '/robots.txt') return handleRobots();
             return json({ error: 'Not Found' }, 404);
         } catch (err) {
             return json({ error: err.message }, 500);
@@ -735,6 +738,35 @@ footer a{color:var(--a2);text-decoration:none}footer a:hover{text-decoration:und
 </footer></body></html>`;
 
     return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=60' } });
+}
+
+// ─── SEO: Sitemap & Robots ──────────────────────
+
+function handleSitemap() {
+    const now = new Date().toISOString().slice(0, 10);
+    const langs = ['en', 'zh', 'ja', 'ko', 'es', 'fr', 'de', 'pt', 'ru', 'ar'];
+    let urls = `  <url><loc>https://yoap.io/</loc><lastmod>${now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>\n`;
+    for (const lang of langs) {
+        urls += `  <url><loc>https://yoap.io/?lang=${lang}</loc><lastmod>${now}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>\n`;
+    }
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}</urlset>`;
+    return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
+}
+
+function handleRobots() {
+    const txt = `User-agent: *
+Allow: /
+Sitemap: https://yoap.io/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+`;
+    return new Response(txt, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=86400' } });
 }
 
 // ─── Utils ──────────────────────────────────────
