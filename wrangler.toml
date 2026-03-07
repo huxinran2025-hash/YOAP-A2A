@@ -1,0 +1,20 @@
+name = "yoap-relay"
+main = "src/relay.js"
+compatibility_date = "2024-01-01"
+workers_dev = true
+
+# 使用 Custom Domain (比 routes 更稳定, Cloudflare 自动处理 DNS + SSL)
+# routes = [
+#   { pattern = "yoap.io/*", zone_name = "yoap.io" },
+#   { pattern = "www.yoap.io/*", zone_name = "yoap.io" }
+# ]
+
+# KV 存储 — Agent 注册信息
+[[kv_namespaces]]
+binding = "AGENTS"
+id = "1acdd31566774e9ba26d05cd78ebf2e7"
+
+# KV 存储 — 消息收件箱
+[[kv_namespaces]]
+binding = "INBOX"
+id = "92c09eab159a47c19503570d4b55326d"
