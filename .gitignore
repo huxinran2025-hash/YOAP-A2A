@@ -2,3 +2,8 @@ node_modules/
 .wrangler/
 *.log
 .DS_Store
+
+my-animation/output/
+my-animation/node_modules/
+my-animation/dist/
+
