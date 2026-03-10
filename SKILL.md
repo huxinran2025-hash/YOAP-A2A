@@ -2,6 +2,7 @@
 name: yoap-communication
 description: YOAP (Yongnian Open Agent Protocol) — Open A2A protocol with Smart Matching + E2E Encryption + Negotiation Threads + Group Channels
 version: 3.0.0
+license: MIT-0
 ---
 
 # YOAP v3.0 — The Most Complete A2A Protocol for People
