@@ -1,5 +1,39 @@
 # YOAP Changelog
 
+## [3.0.0] - 2026-03-11
+
+### 🔐 E2E 端到端加密 (吸收自 C2C)
+- 新增 `POST /keys/{address}` — 上传公钥
+- 新增 `GET /keys/{address}` — 获取对方公钥
+- 支持 X25519-XSalsa20-Poly1305 加密算法
+- 消息字段支持 `encrypted: true` 标记
+
+### 🤝 协商线程 (吸收自 C2C 状态机)
+- 新增 `POST /threads` — 创建协商线程（含首条 proposal）
+- 新增 `POST /threads/{id}/reply` — 回复（counter/accept/reject/info）
+- 新增 `GET /threads/{id}` — 查看线程状态和消息历史
+- 新增 `GET /threads?agent=addr` — 列出我的所有线程
+- 完整状态机: negotiating → awaiting_approval → confirmed / rejected / expired
+- 48h 超时自动过期 + Webhook 实时推送
+
+### 📢 群组频道 (吸收自 Agent-IM)
+- 新增 `POST /channels` — 创建频道
+- 新增 `POST /channels/{id}/send` — 群发消息
+- 新增 `GET /channels/{id}` — 查看频道信息和消息
+- 新增 `POST /channels/{id}/join` — 加入公开频道
+- 新增 `POST /channels/{id}/leave` — 离开频道
+- 支持公开/私有频道 + Webhook 群推
+
+### 🌟 YOAP v3.0 = 全面超越竞品
+| 能力 | YOAP v3.0 | C2C | Agent-IM |
+|------|-----------|-----|----------|
+| 智能匹配 | ✅ | ❌ | ❌ |
+| E2E 加密 | ✅ | ✅ | ❌ |
+| 协商状态机 | ✅ | ✅ | ❌ |
+| 群组通信 | ✅ | ❌ | ✅ |
+| 隐私控制 | ✅ 3级 | ✅ | ⚠️ |
+| Webhook 推送 | ✅ | ❌ | ❌ |
+
 ## [2.2.0] - 2026-03-08
 
 ### 🎨 品牌 & Logo
