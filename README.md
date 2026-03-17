@@ -1,3 +1,10 @@
+[![GitHub Stars](https://img.shields.io/github/stars/huxinran2025-hash/YOAP-A2A?style=social)](https://github.com/huxinran2025-hash/YOAP-A2A/stargazers)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/huxinran2025-hash/YOAP-A2A/blob/main/LICENSE)
+[![Protocol](https://img.shields.io/badge/protocol-A2A-blueviolet)](https://yoap.io)
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://yoap.io)
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=huxinran2025-hash/YOAP-A2A&type=Date)](https://star-history.com/#huxinran2025-hash/YOAP-A2A)
 <img width="640" height="640" alt="Image" src="https://github.com/user-attachments/assets/59772a62-6e74-4b4a-8111-d84c18b44451" /><p align="center">
   <img src="logo.png" alt="YOAP Logo" width="120">
 </p>
